@@ -7,6 +7,7 @@ import { db } from '../../firebase'
 import { async } from '@firebase/util'
 import DataTable from 'react-data-table-component'
 import { LineChart, CartesianGrid, Line, XAxis, YAxis } from 'recharts'
+import Sidebar from '../Sidebar/Sidebar'
 
 const Employee = () => {
     const navigate = useNavigate()
@@ -63,7 +64,10 @@ const Employee = () => {
     }, [])
 
     return (
-        <div className='p-10'>
+        <div className='flex flex-column h-full'>
+            <Sidebar />
+
+            <div className='px-10 w-full h-full'>
             <h1 className='text-2xl font-bold py-4 mb-4 text-center'>View Employee Report</h1>
 
             <LineChart width={1000} height={1000} data={employees}>
@@ -72,10 +76,8 @@ const Employee = () => {
                 <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
                 <Line type="monotone" dataKey="Salary" stroke="#8884d8" />
             </LineChart>
-
         </div>
-
-        
+        </div>        
     )
 }
 

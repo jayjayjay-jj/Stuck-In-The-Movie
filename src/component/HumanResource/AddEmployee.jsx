@@ -5,6 +5,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { collection, addDoc } from 'firebase/firestore'
 import { auth, db } from '../../firebase'
 import { Select, Option } from '@material-tailwind/react'
+import Sidebar from '../Sidebar/Sidebar';
 
 const Register = () => {
     const [name, setName] = useState('')
@@ -42,9 +43,12 @@ const Register = () => {
     }
 
     return (
-        <div className='max-w-[700px] mx-auto my-16 p-4'>
+        <div className='flex flex-column'>
+            <Sidebar />
+
+            <div className='px-10 w-full'>
             <div>
-                <h1 className='text-center text-2xl font-bold py-2'>
+                <h1 className='text-center text-2xl font-bold py-2 mt-5'>
                     Add Employee Account
                 </h1>
             </div>
@@ -115,8 +119,9 @@ const Register = () => {
                     </div>
                 </div> */}
 
-                <button className='border border-green-500 bg-blue-600 hover:bg-green-500 w-full p-4 sy-2 text-white mt-3' onClick={createUser}>Register</button>
+                <button className='border border-green-500 bg-blue-600 mb-5 hover:bg-green-500 w-full p-4 sy-2 text-white mt-3' onClick={createUser}>Register</button>
             </form>
+        </div>
         </div>
     );
 };

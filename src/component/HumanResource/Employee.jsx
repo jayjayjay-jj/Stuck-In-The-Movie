@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { db } from '../../firebase'
 import { async } from '@firebase/util'
 import DataTable from 'react-data-table-component'
+import Sidebar from '../Sidebar/Sidebar'
 
 const Employee = () => {
     const {user, signout} = UserAuth()
@@ -73,53 +74,91 @@ const Employee = () => {
     }, [])
 
     return (
-        <div className='p-10'>
-            <h1 className='text-2xl font-bold py-4 mb-4 text-center'>Employee</h1>
+        <div className='flex flex-column h-full'>
+            <Sidebar />
 
-            <DataTable columns={columns} data={employees} 
-            expandOnRowClicked
-                expandableRows
-                expandableRowsComponent={(row) => {
-                    return (
-                        <div>
-                        <table style={{width: "100%"}}>
-                            <tr >
-                                <td style={{width: "15%"}}>Name: </td>
-                                <td style={{width: "85%"}}>{row.data.employee.Name}</td>
-                            </tr >
+            <div className='px-10 w-full h-full'>
+                <h1 className='text-2xl font-bold py-4 mb-4 text-center'>Employee</h1>
 
-                            <tr>
-                                <td style={{width: "15%"}}>NumberPhone: </td>
-                                <td style={{width: "85%"}}>{row.data.numberPhone}</td>
-                            </tr>
+                <DataTable columns={columns} data={employees} 
+                expandOnRowClicked
+                    expandableRows
+                    expandableRowsComponent={(row) => {
+                        return (
+                            <div>
+                            <table style={{width: "100%"}}>
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Name</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>{row.data.employee.Name}</td>
+                                </tr>
 
-                            <tr>
-                                <td style={{width: "15%"}}>Salary: </td>
-                                <td style={{width: "85%"}}>Rp. {row.data.salary}</td>
-                            </tr>
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Date of Birth</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>{row.data.DOB}</td>
+                                </tr>
 
-                            <tr>
-                                <td style={{width: "15%"}}>WarningLetter: </td>
-                                <td style={{width: "85%"}}>{row.data.warningLetter}</td>
-                            </tr>
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Address</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>{row.data.Address}</td>
+                                </tr>
 
-                            <tr>
-                                <td style={{width: "15%"}}>StartTime: </td>
-                                <td style={{width: "85%"}}>{row.data.startTime}</td>
-                            </tr>
-                            <tr>
-                                <td style={{width: "15%"}}>EndTime: </td>
-                                <td style={{width: "85%"}}>{row.data.endTime}</td>
-                            </tr>
-                        </table>  
-                        </div>
-                    
-                    )
-                }} />
-            
-            <p>Email: {user && user.email}</p>
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Phone</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>{row.data.Phone}</td>
+                                </tr>
 
-            <button onClick={handleSignout} className='px-8 py-2 my-4 border-green-500 bg-blue-600 hover:bg-green-500 p-4 sy-2 text-white'>Sign out</button>
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Email</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>{row.data.Email}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Role</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>{row.data.Role}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Working Start Date</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>{row.data.StartDate}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Working End Date</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td style={{width: '5%'}}></td> 
+                                    <td style={{width: '15%'}}>Salary</td>
+                                    <td style={{width: '5%'}}>:</td>
+                                <td>Rp {row.data.Salary}</td>
+                                </tr>
+                            </table>  
+                            </div>
+                        
+                        )
+                    }} />
+
+                    <p>Email: {user && user.email}</p>
+
+                    <button onClick={handleSignout} className='px-8 py-2 my-4 border-green-500 bg-blue-600 hover:bg-green-500 p-4 sy-2 text-white'>Sign out</button>
+            </div>
         </div>
     )
 }

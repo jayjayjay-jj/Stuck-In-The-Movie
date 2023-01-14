@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { db } from '../../firebase'
 import { async } from '@firebase/util'
 import DataTable from 'react-data-table-component'
+import Sidebar from '../Sidebar/Sidebar'
 
 const Employee = () => {
     const navigate = useNavigate()
@@ -75,7 +76,10 @@ const Employee = () => {
     }, [])
 
     return (
-        <div className='p-10'>
+        <div className='flex flex-column h-full'>
+            <Sidebar />
+
+            <div className='px-10 w-full h-full'>
             <h1 className='text-2xl font-bold py-4 mb-4 text-center'>Fund Requests</h1>
 
             <DataTable columns={columns} data={fundRequests} 
@@ -87,28 +91,28 @@ const Employee = () => {
                     <table style={{width: "100%"}}>
                         <tr >
                             <td style={{width: '5%'}}></td>
-                            <td style={{width: '5%'}}>Name</td>
+                            <td style={{width: '15%'}}>Name</td>
                             <td style={{width: '5%'}}>:</td>
                             <td>{row.data.Name}</td>
                         </tr >
 
                         <tr>
                             <td style={{width: '5%'}}></td>
-                            <td style={{width: '5%'}}>Type</td>
+                            <td style={{width: '15%'}}>Type</td>
                             <td style={{width: '5%'}}>:</td>
                             <td>{row.data.Type}</td>
                         </tr>
 
                         <tr>
                             <td style={{width: '5%'}}></td> 
-                            <td style={{width: '5%'}}>Start Date</td>
+                            <td style={{width: '15%'}}>Start Date</td>
                             <td style={{width: '5%'}}>:</td>
                             <td>{row.data.StartDate}</td>
                         </tr>
 
                         <tr>
                             <td style={{width: '5%'}}></td>
-                            <td style={{width: '5%'}}>End Date</td>
+                            <td style={{width: '15%'}}>End Date</td>
                             <td style={{width: '5%'}}>:</td>
                             <td>{row.data.EndDate}</td>
                         </tr>
@@ -120,6 +124,7 @@ const Employee = () => {
 
                 )
             }} />   
+        </div>
         </div>
     )
 }

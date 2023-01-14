@@ -11,9 +11,9 @@ import Sidebar from '../Sidebar/Sidebar'
 const Employee = () => {
     const navigate = useNavigate()
 
-    const [fneReports, setFneReports] = useState('')
-    const [fneReportsList, setFneReportsList] = useState('')
-    const fneReportCollectionRef = collection(db, "fnesReports")
+    const [personalLeaves, setPersonalLeaves] = useState('')
+    const [personalLeavesList, setPersonalLeavesList] = useState('')
+    const personalLeaveCollectionRef = collection(db, "personalLeaves")
 
     const columns = [
         {
@@ -21,27 +21,31 @@ const Employee = () => {
             selector: (row) => row.Name,
         }, 
         {
-            name: "Facilities and Equipments",
-            selector: (row) => row.FnE,
+            name: "Start Date",
+            selector: (row) => row.StartDate,
         }, 
         {
-            name: "Department",
-            selector: (row) => row.Department,
+            name: "End Date",
+            selector: (row) => row.EndDate,
         }, 
         {
-            name: "Status",
-            selector: (row) => row.Status,
+            name: "Reason",
+            selector: (row) => row.Reason,
+        }, 
+        {
+            name: "Acceptance",
+            selector: (row) => row.Acceptance,
         }
     ]
 
     useEffect(() => {
-        const getFneReports = async() => {
-            const data = await getDocs(fneReportCollectionRef)
-            setFneReports(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        const getPersonalLeaves = async() => {
+            const data = await getDocs(personalLeaveCollectionRef)
+            setPersonalLeaves(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
             console.log(data.docs)
         }
 
-        getFneReports()
+        getPersonalLeaves()
     }, [])
 
     return (
@@ -49,10 +53,10 @@ const Employee = () => {
             <Sidebar />
 
             <div className='px-10 w-full h-full'>
-            <h1 className='text-2xl font-bold py-4 mb-4 text-center'>Facilities and Equipments Report</h1>
+            <h1 className='text-2xl font-bold py-4 mb-4 text-center'>Personal Leaves</h1>
 
-            <DataTable columns={columns} data={fneReports} />          
-        </div>
+            <DataTable columns={columns} data={personalLeaves} />   
+        </div>       
         </div>
     )
 }

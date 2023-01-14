@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { db } from '../../firebase'
 import { async } from '@firebase/util'
 import DataTable from 'react-data-table-component'
+import Sidebar from '../Sidebar/Sidebar'
 
 const Employee = () => {
     const navigate = useNavigate()
@@ -52,7 +53,10 @@ const Employee = () => {
     }, [])
 
     return (
-        <div className='p-10'>
+        <div className='flex flex-column h-full'>
+            <Sidebar />
+
+            <div className='px-10 w-full h-full'>
             <h1 className='text-2xl font-bold py-4 mb-4 text-center'>Advertising Partner</h1>
 
             <DataTable columns={columns} data={advertises} />
@@ -63,6 +67,7 @@ const Employee = () => {
                 </button>
             </div>
             
+        </div>
         </div>
     )
 }

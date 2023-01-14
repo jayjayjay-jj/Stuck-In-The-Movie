@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { UserAuth } from '../../context/AuthContext';
 import { collection, addDoc } from 'firebase/firestore'
 import { auth, db } from '../../firebase'
+import Sidebar from '../Sidebar/Sidebar'
 
 const Register = () => {
     const [company, setCompany] = useState('')
@@ -32,7 +33,10 @@ const Register = () => {
     }
 
     return (
-        <div className='max-w-[700px] mx-auto my-16 p-4'>
+        <div className='flex flex-column h-full'>
+            <Sidebar />
+
+            <div className='px-10 w-full h-full'>
             <div>
                 <h1 className='text-center text-2xl font-bold py-2'>
                     Add Contract with Movie Producer
@@ -67,6 +71,7 @@ const Register = () => {
 
                 <button className='border border-green-500 bg-blue-600 hover:bg-green-500 w-full p-4 sy-2 text-white mt-3'>Add</button>
             </form>
+        </div>
         </div>
     );
 };
