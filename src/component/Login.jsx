@@ -27,7 +27,7 @@ const Login = () => {
     return (
         <div className='max-w-[700px] mx-auto my-16 p-4'>
             <div>
-                <h1 className='text-2xl font-bold py-2'>
+                <h1 className='text-2xl font-bold py-2 text-center'>
                     Login
                 </h1>
             </div>
@@ -43,13 +43,7 @@ const Login = () => {
                     <input onChange={(e) => setPassword(e.target.value)} className='border p-3' type="password" />
                 </div>
 
-                <div>
-                    <p className='py-2'>
-                        Don't have an account? <Link to='/register' className='underline'>Register here</Link>
-                    </p>
-                </div>
-
-                <button className='border border-green-500 bg-blue-600 hover:bg-green-500 w-full p-4 sy-2 text-white'>
+                <button className='border border-500 bg-blue-600 hover:bg-green-500 w-full p-4 sy-2 text-white mt-2'>
                     Login
                 </button>
             </form>
