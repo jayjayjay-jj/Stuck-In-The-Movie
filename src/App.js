@@ -26,6 +26,12 @@ import AddFnE from './component/StorageDepartment/AddFnE'
 import FnE from './component/StorageDepartment/FnE'
 import AddPnE from './component/PromotionEventDepartment/AddPnE'
 import PnE from './component/PromotionEventDepartment/PnE'
+import AddFnBOrder from './component/CafeFrontOffice/AddFnBOrder'
+import FnBOrder from './component/CafeFrontOffice/FnBOrder'
+import AddMovieOrder from './component/MovieFrontOffice/AddMovieOrder'
+import MovieOrder from './component/MovieFrontOffice/MovieOrder'
+import AddSchedule from './component/MovieSchedule/AddSchedule'
+import Schedule from './component/MovieSchedule/Schedule'
 import { Routes, Route } from 'react-router-dom'
 import { AuthContextProvider } from './context/AuthContext'
 import ProtectedRoute from './component/ProtectedRoute'
@@ -151,6 +157,36 @@ export default function App() {
             <Route path='/pnes' element={
               <ProtectedRoute>
                 <PnE />
+              </ProtectedRoute>
+            }></Route>
+            <Route path='/addFnBOrders' element={
+              <ProtectedRoute>
+                <AddFnBOrder />
+              </ProtectedRoute>
+            }></Route>
+            <Route path='/fnbOrders' element={
+              <ProtectedRoute>
+                <FnBOrder />
+              </ProtectedRoute>
+            }></Route>
+            <Route path='/addMovieOrders' element={
+              <ProtectedRoute>
+                <AddMovieOrder />
+              </ProtectedRoute>
+            }></Route>
+            <Route path='/movieOrders' element={
+              <ProtectedRoute>
+                <MovieOrder />
+              </ProtectedRoute>
+            }></Route>
+            <Route path='/addSchedule' element={
+              <ProtectedRoute>
+                <AddSchedule />
+              </ProtectedRoute>
+            }></Route>
+            <Route path='/schedules' element={
+              <ProtectedRoute>
+                <Schedule />
               </ProtectedRoute>
             }></Route>
           </Routes>

@@ -96,5 +96,29 @@ export const SidebarData = [
     {
         title: "Promotion and Events",
         link: "./pnes"
+    },
+    {
+        title: "Add Food and Beverage Order",
+        link: "./addFnBOrders"
+    },
+    {
+        title: "Food and Beverages Order",
+        link: "./fnbOrders"
+    },
+    {
+        title: "Add Movie Order",
+        link: "./addMovieOrders"
+    },
+    {
+        title: "Movie Order",
+        link: "./movieOrders"
+    },
+    {
+        title: "Add Schedule",
+        link: "./addSchedule"
+    },
+    {
+        title: "Movie Schedule",
+        link: "./schedules"
     }
 ]

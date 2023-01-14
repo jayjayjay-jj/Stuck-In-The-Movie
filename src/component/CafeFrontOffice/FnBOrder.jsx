@@ -13,37 +13,37 @@ import Sidebar from '../Sidebar/Sidebar'
 const Employee = () => {
     const navigate = useNavigate()
 
-    const [fnbs, setFnbs] = useState('')
-    const [fnbsList, setFnbsList] = useState('')
-    const fnbsCollectionRef = collection(db, "fnbs")
+    const [fnbOrder, setfnbOrder] = useState('')
+    const [fnbOrderList, setFnbOrderList] = useState('')
+    const orderCollectionRef = collection(db, "fnbOrders")
 
     const columns = [
         {
-            name: "Name",
-            selector: (row) => row.Name,
+            name: "Time",
+            selector: (row) => row.Time,
         }, 
         {
-            name: "Price",
-            selector: (row) => row.Price,
+            name: "Menu",
+            selector: (row) => row.Menu,
         }, 
         {
-            name: "Stock",
-            selector: (row) => row.Stock,
+            name: "Quantity",
+            selector: (row) => row.Quantity,
         }, 
         {
-            name: "Type",
-            selector: (row) => row.Type,
+            name: "Payment",
+            selector: (row) => row.Payment,
         }
     ]
 
     useEffect(() => {
-        const getFnbs = async() => {
-            const data = await getDocs(fnbsCollectionRef)
-            setFnbs(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        const getFnBOrder = async() => {
+            const data = await getDocs(orderCollectionRef)
+            setfnbOrder(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
             console.log(data.docs)
         }
 
-        getFnbs()
+        getFnBOrder()
     }, [])
 
     return (
@@ -51,9 +51,9 @@ const Employee = () => {
             <Sidebar />
 
             <div className='px-10 w-full h-full'>
-            <h1 className='text-2xl font-bold py-4 mb-4 text-center'>Food and Beverages</h1>
+            <h1 className='text-2xl font-bold py-4 mb-4 text-center'>Food and Beverages Order</h1>
 
-            <DataTable columns={columns} data={fnbs} />
+            <DataTable columns={columns} data={fnbOrder} />
         </div>
         </div>
     )
